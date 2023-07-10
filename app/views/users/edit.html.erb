@@ -1,0 +1,26 @@
+<h1>Edit user</h1>
+
+<%= form_with model: @user do |form| %>
+  <% if @user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label(:username, 'Enter your username: ')%>
+  <%= form.text_field(:username, maxlength: 20) %>
+  <br><br>
+  <%= form.label(:email, 'Enter your email: ') %>
+  <%= form.email_field(:email, maxlength: 20) %>
+  <br><br>
+  <%= form.label(:password, 'Enter your password: ') %>
+  <%= form.password_field(:password, maxlength: 20) %>
+  <br><br>
+  <%= form.submit('Update') %>
+<% end %>
